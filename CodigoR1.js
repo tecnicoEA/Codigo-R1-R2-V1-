@@ -28,6 +28,7 @@ http.createServer(function (req, res) {
 
 		client.on('data', function(data) {
 			console.log('Received...: ' + data);
+			res.end(data);
 			client.destroy(); // kill client after server's response
 		});
 
@@ -35,9 +36,7 @@ http.createServer(function (req, res) {
 			console.log('Connection closed');
 		});
 
-
-
-		res.end("yeah");
+		
 	}
 	else if(req.method=='GET') {
 		var url_parts = url.parse(req.url,true);
